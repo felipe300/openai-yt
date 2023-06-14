@@ -1,10 +1,16 @@
-const readline = require("readline")
+const express = require("express")
 const { generateMeta, generateImage } = require("./controllers/openaiController.js")
 
-const rl = readline.createInterface({
-	input: process.stdin,
-	output: process.stdout,
-})
+const app = express()
+const PORT = 3000
 
-// rl.question("YouTube title: \n", (title) => generateMeta(title))
-rl.question("Describe your YouTube thumbnail: \n", (desc) => generateImage(desc))
+app.use(express.json())
+
+app.get('', (req, res) => { })
+app.post('/openai/meta', generateMeta)
+app.post('/openai/image', generateImage)
+
+app.listen(
+	PORT,
+	() => console.log(`Server listening on port: ${PORT}🔥🔥🔥`)
+)
