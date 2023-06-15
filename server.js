@@ -5,8 +5,8 @@ const app = express()
 const PORT = 3000
 
 app.use(express.json())
+app.use(express.static('public'))
 
-app.get('', (req, res) => { })
 app.post('/openai/meta', generateMeta)
 app.post('/openai/image', generateImage)
 
